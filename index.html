@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Quiz Application - Neev Rupareliya</title>
+  <meta name="description" content="Dynamic interactive quiz application featuring customizable categories, real-time timer countdown, score tracking, and detailed answer review.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-icon">⚡</span>
+        <h1>QuizMaster</h1>
+      </div>
+      <div class="header-stats">
+        <span class="high-score-pill">🏆 Best: <strong id="best-score">0</strong></span>
+        <button id="sound-toggle" class="icon-btn" aria-label="Toggle Sound" title="Toggle Sound">🔊</button>
+      </div>
+    </header>
+
+    <!-- Screen 1: Start Screen -->
+    <section id="start-screen" class="screen active">
+      <div class="hero-card">
+        <h2>Challenge Your Tech Knowledge</h2>
+        <p>Test your skills across Python, JavaScript, Web Development, and Computer Science with real-time scoring and instant feedback.</p>
+        
+        <div class="config-grid">
+          <div class="config-group">
+            <label for="category-select">Select Category</label>
+            <select id="category-select">
+              <option value="all">🌐 All Categories</option>
+              <option value="python">🐍 Python</option>
+              <option value="javascript">⚡ JavaScript</option>
+              <option value="web">🎨 Web Development (HTML/CSS)</option>
+              <option value="cs">💻 Computer Science Fundamentals</option>
+            </select>
+          </div>
+
+          <div class="config-group">
+            <label for="count-select">Number of Questions</label>
+            <select id="count-select">
+              <option value="5">5 Questions (Quick)</option>
+              <option value="10" selected>10 Questions (Standard)</option>
+              <option value="15">15 Questions (Challenge)</option>
+            </select>
+          </div>
+        </div>
+
+        <button id="start-btn" class="btn btn-primary btn-glow">Start Quiz Now →</button>
+      </div>
+    </section>
+
+    <!-- Screen 2: Quiz Screen -->
+    <section id="quiz-screen" class="screen">
+      <div class="quiz-status-bar">
+        <div class="status-left">
+          <span class="question-pill" id="question-indicator">Question 1 / 10</span>
+          <span class="category-tag" id="current-category">Python</span>
+        </div>
+        <div class="status-right">
+          <div class="timer-box" id="timer-box">
+            <span class="timer-icon">⏳</span>
+            <span id="time-left">15</span>s
+          </div>
+          <div class="score-display">Score: <strong id="current-score">0</strong></div>
+        </div>
+      </div>
+
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+
+      <div class="question-card" id="question-card">
+        <h3 id="question-text">Loading question...</h3>
+        <div class="options-grid" id="options-grid"></div>
+      </div>
+
+      <div class="quiz-footer">
+        <div class="feedback-toast" id="feedback-toast"></div>
+        <button id="next-btn" class="btn btn-primary hidden">Next Question →</button>
+      </div>
+    </section>
+
+    <!-- Screen 3: Results Screen -->
+    <section id="result-screen" class="screen">
+      <div class="result-card">
+        <div class="result-badge" id="result-badge">🎉</div>
+        <h2 id="result-title">Quiz Completed!</h2>
+        <p id="result-subtitle">Great effort! Here is how you performed:</p>
+
+        <div class="score-summary-circle">
+          <div class="circle-inner">
+            <span class="percentage" id="score-percentage">80%</span>
+            <span class="score-fraction" id="score-fraction">8 / 10</span>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-box">
+            <span class="stat-num" id="stat-correct">0</span>
+            <span class="stat-label">Correct</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num" id="stat-wrong">0</span>
+            <span class="stat-label">Incorrect</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num" id="stat-accuracy">0%</span>
+            <span class="stat-label">Accuracy</span>
+          </div>
+        </div>
+
+        <div class="result-actions">
+          <button id="restart-btn" class="btn btn-primary">Play Again 🔄</button>
+          <button id="review-btn" class="btn btn-secondary">Review Answers 📝</button>
+        </div>
+
+        <!-- Answers Review Accordion -->
+        <div id="review-section" class="review-section hidden">
+          <h3>Question Review & Explanations</h3>
+          <div id="review-list" class="review-list"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="app-footer">
+    <p>Crafted by <strong>Neev Rupareliya</strong> · <a href="https://github.com/Neev2850" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
